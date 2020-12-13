@@ -1,0 +1,61 @@
+{% extends 'base/base.html '%}
+{% block title %}VLeague - Tra cứu đội bóng{% endblock %}
+{% block content %}
+     <section class="tables">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="section-heading">
+                  <h2>Tra cứu đội bóng</h2>
+                </div>
+                <form class="form-inline md-form mr-auto mb-4">
+                      <input name="keyword" class="form-control mr-sm-2" type="text" placeholder="Nhập từ khóa" aria-label="Search">
+                      <button class="btn btn-danger" type="submit">Tra cứu</button>
+                </form>
+                <div>
+                    {% if teams %}
+                         <div class="alternate-table">
+                              <table>
+                                <thead>
+                                  <tr>
+                                    <th>Số thứ tự</th>
+                                    <th>Tên đội</th>
+                                    <th>Sân nhà</th>
+                                    <th>Huấn luyện viên</th>
+                                    <th>Các cầu thủ</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                 {% for team in teams %}
+                                  <tr>
+                                    <td>{{ team.id }}</td>
+                                    <td>{{ team.name }}</td>
+                                    <td>{{ team.stadium }}</td>
+                                    <td>
+                                    {% for player in team.players %}
+                                      {% if player.position.name == "HLV" %}
+                                        {{player.name}}
+                                      {% endif %}
+                                    {% endfor %}
+                                     </td>
+                                    <td>
+                                        <ul>
+                                            {% for player in team.players %}
+                                            <li>{{player.name}} ({{player.position.value}})</li>
+                                            {% endfor %}
+                                        </ul>
+                                    </td>
+                                  </tr>
+                                 {% endfor %}
+                                </tbody>
+                              </table>
+                         </div>
+                        {% else %}
+                        <h2>Không tìm thấy nè</h2>
+                    {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+     </section>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base/base.html '%}
+{% block title %}VLeague - Danh sách cầu thủ ghi bàn{% endblock %}
+{% block content %}
+     <section class="tables">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="section-heading">
+                  <h2>Danh sách cầu thủ ghi bàn</h2>
+                </div>
+                         <div class="alternate-table">
+                              <table>
+                                <thead>
+                                  <tr>
+                                    <th>#</th>
+                                    <th>Tên cầu thủ</th>
+                                    <th>Tên đội</th>
+                                    <th>Vị trí  </th>
+                                    <th>Tổng số bàn thắng</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                 {% for player in players %}
+                                      <tr>
+                                        <td>#</td>
+                                        <td>{{ player.name}}</td>
+                                        <td>
+                                            {% for team in teams %}
+                                                {% if team.id == player.team_id %}
+                                                    {{ team.name }}
+                                                {% endif %}
+                                            {% endfor %}
+                                        </td>
+                                        <td>{{ player.position.value }}</td>
+                                        <td>{{ player.total_goals }}</td>
+                                      </tr>
+                                     {% endfor %}
+                                </tbody>
+                              </table>
+                         </div>
+                </div>
+              </div>
+            </div>
+          </div>
+     </section>
+{% endblock %}

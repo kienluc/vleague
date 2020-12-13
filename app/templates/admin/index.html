@@ -1,0 +1,9 @@
+{% extends "admin/master.html" %}
+{% block body %}
+    {% if current_user.is_authenticated %}
+        <h1 class="text-center">ADMIN PAGE!!!!</h1>
+        <h1 class="text-center">Login as "{{ current_user.name }}"</h1>
+    {% else %}
+        {% include "admin/login.html" %}
+    {% endif %}
+{% endblock %}

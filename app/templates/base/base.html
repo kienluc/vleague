@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="icon" href="static/images/vleague-icon.png">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+<!--
+Ramayana CSS Template
+https://templatemo.com/tm-529-ramayana
+-->
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fontawesome.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/templatemo-style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.css') }}">
+
+  </head>
+
+<body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+      <!-- Main -->
+        <div id="main">
+          <div class="inner">
+            <!-- Header -->
+            {% block header %}
+              {% include 'base/header.html'%}
+            {% endblock %}
+
+            {% block content %}
+              {% include 'base/content.html'%}
+            {% endblock %}
+          </div>
+        </div>
+    </div>
+      <!-- Sidebar -->
+        {% block slidebar %}
+            {% include 'base/slidebar.html'%}
+        {% endblock %}
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+    <script src="static/vendor/jquery/jquery.min.js"></script>
+    <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="static/js/browser.min.js"></script>
+    <script src="static/js/breakpoints.min.js"></script>
+    <script src="static/js/transition.js"></script>
+    <script src="static/js/owl-carousel.js"></script>
+    <script src="static/js/custom.js"></script>
+</body>
+</html>
