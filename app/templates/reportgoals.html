@@ -12,17 +12,18 @@
                               <table>
                                 <thead>
                                   <tr>
-                                    <th>#</th>
+                                    <th>STT</th>
                                     <th>Tên cầu thủ</th>
                                     <th>Tên đội</th>
-                                    <th>Vị trí  </th>
+                                    <th>Loại cầu thủ</th>
+                                    <th>Vị trí</th>
                                     <th>Tổng số bàn thắng</th>
                                   </tr>
                                 </thead>
                                 <tbody>
                                  {% for player in players %}
                                       <tr>
-                                        <td>#</td>
+                                        <td>{{ loop.index }}</td>
                                         <td>{{ player.name}}</td>
                                         <td>
                                             {% for team in teams %}
@@ -31,6 +32,7 @@
                                                 {% endif %}
                                             {% endfor %}
                                         </td>
+                                        <td>{{ player.player_type.value }}</td>
                                         <td>{{ player.position.value }}</td>
                                         <td>{{ player.total_goals }}</td>
                                       </tr>
