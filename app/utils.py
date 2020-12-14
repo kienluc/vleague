@@ -10,6 +10,21 @@ def read_teams(keyword=None):
     return teams
 
 
+def read_players(selected, keyword=None):
+    players = Player.query.all()
+    if keyword:
+        if selected == "playername":
+            players = [p for p in players if p.name.lower().find(keyword.lower()) >= 0]
+        try:
+            if selected =="numofgoals":
+                players = [p for p in players if p.total_goals == int(keyword)]
+        except:
+            players=[]
+    else:
+        players = players
+    return players
+
+
 def read_goals():
     goals = Goal.query.all()
     players = Player.query.all()

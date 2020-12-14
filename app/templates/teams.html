@@ -34,7 +34,7 @@
                                     <td>
                                     {% for player in team.players %}
                                       {% if player.position.name == "HLV" %}
-                                        {{player.name}}
+                                        <strong>{{player.name}}</strong>
                                       {% endif %}
                                     {% endfor %}
                                      </td>
@@ -51,7 +51,7 @@
                               </table>
                          </div>
                         {% else %}
-                        <h2>Không tìm thấy nè</h2>
+                        <h2>Không tìm thấy đội bóng</h2>
                     {% endif %}
                 </div>
               </div>
