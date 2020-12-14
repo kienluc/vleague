@@ -1,11 +1,51 @@
 {% extends 'base/base.html '%}
 {% block title %}VLeague - Tra cứu cầu thủ{% endblock %}
 {% block content %}
-    <label for="cars" name="player">Tra cứu cầu thủ theo:</label>
-    <select class="custom-select custom-select-sm" name="cars" id="cars">
-        <option selected value="">Tên cầu thủ</option>
-        <option value="">Loại cầu thủ</option>
-        <option value="">Số bàn thắng</option>
-        <option value="">Đội</option>
+    <label for="players" name="player">Tra cứu cầu thủ theo:</label>
+    <select class="custom-select custom-select-sm" name="sec-player" id="players" form="playerform" style="margin-bottom: 10px">
+        <option selected value="playername">Tên cầu thủ</option>
+        <option value="numofgoals">Số bàn thắng</option>
     </select>
+    <form class="form-inline md-form mr-auto mb-4" method="post" id="playerform">
+        <input name="keyword" class="form-control mr-sm-2" type="text" placeholder="Nhập từ khóa" aria-label="Search">
+        <button class="btn btn-danger" type="submit">Tra cứu</button>
+    </form>
+        <div>
+           {% if players %}
+             <div class="alternate-table">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Số thứ tự</th>
+                        <th>Tên cầu thủ</th>
+                        <th>Loại cầu thủ</th>
+                        <th>Đội bóng</th>
+                        <th>Vị trí</th>
+                        <th>Tổng số bàn ghi</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for player in players %}
+                      <tr>
+                        <td>{{loop.index}}</td>
+                        <td>{{player.name}}</td>
+                        <td>{{player.player_type.value}}</td>
+                        <td>
+                            {% for team in teams %}
+                                {% if team.id == player.team_id %}
+                                    {{team.name}}
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>{{player.position.value}}</td>
+                        <td>{{player.total_goals}}</td>
+                      </tr>
+                    {% endfor %}
+                    </tbody>
+                  </table>
+             </div>
+            {% else %}
+                <h2>Không tìm thấy cầu thủ</h2>
+            {% endif %}
+        </div>
 {% endblock %}

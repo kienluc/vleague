@@ -32,9 +32,12 @@ def goal_list():
     return render_template("reportgoals.html", players=utils.read_goals(), teams=Team.query.all())
 
 
-@app.route("/players")
+@app.route("/players", methods=["post", "get"])
 def player_list():
-    return render_template("players.html")
+    selected_value = request.form.get('sec-player')
+    kw = request.form.get("keyword")
+    teams = Team.query.all()
+    return render_template("players.html", players=utils.read_players(selected_value, kw), teams=teams)
 
 
 @app.route("/login-admin", methods=["post", "get"])
