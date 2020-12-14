@@ -1,5 +1,5 @@
 {% extends 'base/base.html '%}
-{% block title %}VLeague - Lịch thi đấu{% endblock %}
+{% block title %}VLeague - Bảng xếp hạng{% endblock %}
 {% block content %}
      <section class="tables">
           <div class="container-fluid">
@@ -18,10 +18,21 @@
                         <th>Hòa</th>
                         <th>Thua</th>
                         <th>Hiệu số</th>
+                        <th>Điểm</th>
                       </tr>
                     </thead>
                     <tbody>
-
+                    {% for team in teams %}
+                      <tr>
+                        <th>{{ loop.index }}</th>
+                        <th>{{ team.name }}</th>
+                        <th>{{ team.win }}</th>
+                        <th>{{ team.tie }}</th>
+                        <th>{{ team.lose }}</th>
+                        <th>{{ team.win_goals-team.lose_goals }}    ({{ team.win_goals }}-{{ team.lose_goals }})</th>
+                        <th>{{ team.score }}</th>
+                      </tr>
+                    {% endfor %}
                     </tbody>
                   </table>
                 </div>

@@ -7,6 +7,7 @@
               <div class="col-md-12">
                 <div class="section-heading">
                   <h2>Lịch thi đấu - Kết Quả</h2>
+                    <h6>*Kết quả cập nhật liên tục<h6>
                 </div>
                 <div class="alternate-table">
                   <table>
@@ -22,7 +23,7 @@
                     <tbody>
                      {% for match in matches %}
                       <tr>
-                        <td>{{match.id}}</td>
+                        <td>{{ loop.index }}</td>
                           <td><a href="#">{{ match.home }} - {{ match.away }}</a></td>
                         <td>{{ match.MatchTime }}</td>
                         <td>{{ match.stadium }}</td>

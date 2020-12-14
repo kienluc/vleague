@@ -13,12 +13,12 @@ def index():
 @app.route("/schedule")
 def schedule():
     matches = Match.query.all()
-    return render_template("schedule.html", matches=matches, results=utils.read_result())
+    return render_template("schedule.html", matches=matches)
 
 
 @app.route("/ranking")
 def ranking():
-    return render_template("ranking.html")
+    return render_template("ranking.html", teams=utils.read_result())
 
 
 @app.route("/teams")

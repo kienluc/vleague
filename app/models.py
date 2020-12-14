@@ -118,6 +118,11 @@ class Team(db.Model):
     name = Column(String(50), nullable=False)
     stadium = Column(String(50), nullable=False)
     players = relationship('Player', backref='team', lazy=True)
+    win = Column(Integer, nullable=True, default=0)
+    tie = Column(Integer, nullable=True, default=0)
+    lose = Column(Integer, nullable=True, default=0)
+    win_goals = Column(Integer, nullable=True, default=0)
+    lose_goals = Column(Integer, nullable=True, default=0)
     score = Column(Integer, nullable=True, default=0)
 
     def __str__(self):
@@ -217,5 +222,3 @@ admin.add_view(LogoutView(name="Logout"))
 if __name__ == "__main__":
     db.drop_all()
     db.create_all()
-
-
