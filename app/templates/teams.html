@@ -18,7 +18,7 @@
                               <table>
                                 <thead>
                                   <tr>
-                                    <th>Số thứ tự</th>
+                                    <th>STT</th>
                                     <th>Tên đội</th>
                                     <th>Sân nhà</th>
                                     <th>Huấn luyện viên</th>
@@ -28,7 +28,7 @@
                                 <tbody>
                                  {% for team in teams %}
                                   <tr>
-                                    <td>{{ team.id }}</td>
+                                    <td>{{ loop.index }}</td>
                                     <td>{{ team.name }}</td>
                                     <td>{{ team.stadium }}</td>
                                     <td>

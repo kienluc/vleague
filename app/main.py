@@ -29,7 +29,7 @@ def team_list():
 
 @app.route("/reportgoals")
 def goal_list():
-    return render_template("reportgoals.html", players=utils.read_goals(), teams=Team.query.all(), rank=0)
+    return render_template("reportgoals.html", players=utils.read_goals(), teams=Team.query.all())
 
 
 @app.route("/players", methods=["post", "get"])
